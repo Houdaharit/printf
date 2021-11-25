@@ -6,7 +6,7 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:36:45 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/24 23:01:55 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/25 05:56:53 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_check_t(char c)
 {
-	char *str;
+	char	*str;
 
 	str = "idusxXpc%";
 	while (*str && *str != c)
@@ -24,7 +24,7 @@ int	ft_check_t(char c)
 	return (0);
 }
 
-void ft_conversion(char c, va_list ptr, int *count)
+void	ft_conversion(char c, va_list ptr, int *count)
 {
 	if (c == '%')
 		*count += ft_putchar('%');
@@ -34,7 +34,7 @@ void ft_conversion(char c, va_list ptr, int *count)
 	{
 		ft_putstr("0x");
 		*count += 2;
-			ft_convert_hex_ptr(va_arg(ptr, long long), "0123456789abcdef", count);
+		ft_convert_hex_ptr(va_arg(ptr, long long), "0123456789abcdef", count);
 	}
 	if (c == 's')
 		*count += ft_putstr(va_arg(ptr, char *));
@@ -44,7 +44,7 @@ void ft_conversion(char c, va_list ptr, int *count)
 		ft_convert_hex_dec(va_arg(ptr, long), "0123456789abcdef", count);
 	if (c == 'X')
 		ft_convert_hex_dec(va_arg(ptr, long), "0123456789ABCDEF", count);
-		if (c == 'u')
+	if (c == 'u')
 		ft_putnbr_u(va_arg(ptr, unsigned long), count);
 }
 
@@ -70,7 +70,6 @@ int	ft_printf(const char *str, ...)
 			count += ft_putchar(*str);
 			str++;
 		}
-		
 	}
 	va_end(ptr);
 	return (count);

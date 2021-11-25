@@ -6,11 +6,10 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:55:31 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/24 22:48:33 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/25 06:00:08 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-
 
 void	ft_convert_hex_ptr(long long n, char *base, int *count)
 {
@@ -20,7 +19,7 @@ void	ft_convert_hex_ptr(long long n, char *base, int *count)
 	*count += 1;
 	if (ul / 16)
 		ft_convert_hex_ptr(ul / 16, base, count);
-		ft_putchar(base[ul % 16]);
+	ft_putchar(base[ul % 16]);
 }
 
 void	ft_convert_hex_dec(long n, char *base, int *count)
@@ -30,6 +29,6 @@ void	ft_convert_hex_dec(long n, char *base, int *count)
 	ul = (unsigned int)n;
 	*count += 1;
 	if (ul / 16)
-	ft_convert_hex_dec(ul / 16, base, count);
-		ft_putchar(base[ul % 16]);
+		ft_convert_hex_dec(ul / 16, base, count);
+	ft_putchar(base[ul % 16]);
 }
