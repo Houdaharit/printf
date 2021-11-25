@@ -1,20 +1,17 @@
 NAME = libftp.a
 
-CC = cc
+CC = gcc
 
-CLFAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c
+SRC = ft_printf.c ft_put.c ft_convert_hex_ptr.c
 
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
-	ar -rc $(NAME) $(<:.c=.o)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME) : $(OBJ) 
+	ar -rc $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)

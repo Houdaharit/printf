@@ -6,67 +6,81 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:36:45 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/24 14:54:48 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/24 23:01:55 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "functions/functions.h"
 #include "ft_printf.h"
 
-int	ft_putstr_str(const char *str)
+int	ft_check_t(char c)
 {
-	int	i;
+	char *str;
 
-	i = 0;
-	while (str[i] && str[i] == '%')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return (i);
+	str = "idusxXpc%";
+	while (*str && *str != c)
+		str++;
+	if (*str)
+		return (1);
+	return (0);
 }
 
-void	ft_conversion(char c, va_list ptr)
+void ft_conversion(char c, va_list ptr, int *count)
 {
 	if (c == '%')
-		ft_putchar('%');
+		*count += ft_putchar('%');
 	if (c == 'd' || c == 'i')
-		ft_putnbr(va_arg(ptr, int));
+		ft_putnbr(va_arg(ptr, int), count);
 	if (c == 'p')
 	{
 		ft_putstr("0x");
-		if (va_arg(ptr, long long))
-			ft_convert_hex_ptr(va_arg(ptr, long long), "0123456789abcdef");
+		*count += 2;
+			ft_convert_hex_ptr(va_arg(ptr, long long), "0123456789abcdef", count);
 	}
 	if (c == 's')
-		ft_putstr(va_arg(ptr, char *));
+		*count += ft_putstr(va_arg(ptr, char *));
 	if (c == 'c')
-		ft_putchar(va_arg(ptr, int));
+		*count += ft_putchar(va_arg(ptr, int));
 	if (c == 'x')
-		ft_convert_hex_dec(va_arg(ptr, int), "0123456789abcdef");
+		ft_convert_hex_dec(va_arg(ptr, long), "0123456789abcdef", count);
 	if (c == 'X')
-		ft_convert_hex_dec(va_arg(ptr, int), "0123456789ABCDEF");
-	va_end(ptr);
+		ft_convert_hex_dec(va_arg(ptr, long), "0123456789ABCDEF", count);
+		if (c == 'u')
+		ft_putnbr_u(va_arg(ptr, unsigned long), count);
 }
 
-void	ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	ptr;
-	int		i;
+	int		count;
 
-	i = 0;
+	count = 0;
 	va_start(ptr, str);
-	while (str[i])
+	while (*str)
 	{
-		i = ft_putstr_str(str);
-		if (i < ft_strlen(str))
-			ft_conversion(str[i + 1], ptr);
-		i += 2;
+		if (*str == '%')
+		{
+			if (ft_check_t(str[1]))
+			{
+				ft_conversion(str[1], ptr, &count);
+				str += 2;
+			}
+		}
+		else
+		{
+			count += ft_putchar(*str);
+			str++;
+		}
+		
 	}
 	va_end(ptr);
+	return (count);
 }
-
-int main()
-{
-	ft_printf("Hello everyone %%");
-}
+/*
+int main (){
+	int i = -1337;
+	char x = 'a';
+	printf(" %d\n",ft_printf("hello\n %c%s%x%Xdklewdew %c %d %i hello \t rejlwrew%p%p%x %u",'a',NULL,8797,-4897,'z',789789,7987,&i,&x,-87946897,-9223372036854775807));
+	printf("\n ----- \n");
+	printf(" %d\n",printf("hello\n %c%s%x%Xdklewdew %c %d %i hello \t rejlwrew%p%p%x %lu",'a',NULL,8797,-4897,'z',789789,7987,&i,&x,-87946897,-9223372036854775807));
+	//printf(" %d\n",printf("hello %c",'c'));
+}*/

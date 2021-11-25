@@ -6,25 +6,47 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:05:32 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/24 14:55:08 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/25 02:53:18 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "functions.h"
+#include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_strlen(char *str)
 {
-	write(1, &c, 1);
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+int	ft_putchar(char c)
+{
+	return (write(1, &c, 1));
 }
 
 int	ft_putstr(char *str)
 {
-	return (write(1, str, ft_strlen(str)));
+	int	len;
+
+	len = 0;
+	if (!str)
+	{
+		return write(1, "(null)", 6);
+	}
+	while (str[len])
+	{
+		write(1, &str[len], 1);
+		len++;
+	}
+	return (len);
 }
 
-void	ft_putnbr(int nbr)
+void	ft_putnbr(int nbr, int *count)
 {
 	unsigned int	n;
 
+	*count += 1;
 	if (nbr < 0)
 	{
 		ft_putchar('-');
@@ -32,36 +54,17 @@ void	ft_putnbr(int nbr)
 	}
 	else
 		n = nbr;
-	if (n >= 0 && n <= 9)
-		ft_putchar(n + '0');
 	if (n / 10)
-	{
-		ft_putnbr(n / 10);
-		ft_putchar (n % 10 + '0');
-	}
+		ft_putnbr(n / 10, count);
+	ft_putchar (n % 10 + '0');
 }
 
-void	ft_putnbr_u(unsigned int nbr)
+void	ft_putnbr_u(unsigned long nbr, int *count)
 {
+	*count += 1;
 	if (nbr >= 0 && nbr <= 9)
 		ft_putchar(nbr + '0');
 	if (nbr / 10)
-	{
-		ft_putnbr_u(nbr / 10);
-		ft_putchar(nbr % 10 + '0');
-	}
+		ft_putnbr_u(nbr / 10, count);
+	ft_putchar(nbr % 10 + '0');
 }
-
-int	ft_strlen(const char *str)
-{
-	int	len;
-
-	len = 0;
-	while (*str)
-	{
-		len++;
-		str++;
-	}
-	return (len);
-}
-
