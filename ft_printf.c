@@ -6,7 +6,7 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:36:45 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/25 05:56:53 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/25 21:43:28 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_check_t(char c)
 {
 	char	*str;
 
-	str = "idusxXpc%";
+	str = "cspdiuxX%";
 	while (*str && *str != c)
 		str++;
 	if (*str)
@@ -41,9 +41,9 @@ void	ft_conversion(char c, va_list ptr, int *count)
 	if (c == 'c')
 		*count += ft_putchar(va_arg(ptr, int));
 	if (c == 'x')
-		ft_convert_hex_dec(va_arg(ptr, long), "0123456789abcdef", count);
+		ft_convert_hex_dec(va_arg(ptr, int), "0123456789abcdef", count);
 	if (c == 'X')
-		ft_convert_hex_dec(va_arg(ptr, long), "0123456789ABCDEF", count);
+		ft_convert_hex_dec(va_arg(ptr, int), "0123456789ABCDEF", count);
 	if (c == 'u')
 		ft_putnbr_u(va_arg(ptr, unsigned long), count);
 }
@@ -74,12 +74,3 @@ int	ft_printf(const char *str, ...)
 	va_end(ptr);
 	return (count);
 }
-/*
-int main (){
-	int i = -1337;
-	char x = 'a';
-	printf(" %d\n",ft_printf("hello\n %c%s%x%Xdklewdew %c %d %i hello \t rejlwrew%p%p%x %u",'a',NULL,8797,-4897,'z',789789,7987,&i,&x,-87946897,-9223372036854775807));
-	printf("\n ----- \n");
-	printf(" %d\n",printf("hello\n %c%s%x%Xdklewdew %c %d %i hello \t rejlwrew%p%p%x %lu",'a',NULL,8797,-4897,'z',789789,7987,&i,&x,-87946897,-9223372036854775807));
-	//printf(" %d\n",printf("hello %c",'c'));
-}*/
