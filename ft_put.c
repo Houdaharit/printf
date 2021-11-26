@@ -6,7 +6,7 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:05:32 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/26 10:21:16 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/26 11:03:32 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -58,12 +58,4 @@ void	ft_putnbr(int nbr, int *count)
 	if (n / 10)
 		ft_putnbr(n / 10, count);
 	ft_putchar (n % 10 + '0');
-}
-
-void	ft_putnbr_u(unsigned int nbr, int *count)
-{
-	*count += 1;
-	if (nbr / 10)
-		ft_putnbr_u(nbr / 10, count);
-	ft_putchar(nbr % 10 + '0');
 }
