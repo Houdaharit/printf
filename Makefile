@@ -19,4 +19,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
+mclean: all clean
+
 re: fclean all
