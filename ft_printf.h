@@ -6,7 +6,7 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:11:05 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/26 07:52:45 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/26 10:27:39 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int		ft_putchar(char c);
 int		ft_putstr(char *str);
 void	ft_putnbr(int nbr, int *count);
 void	ft_convert_hex_ptr(long long n, char *base, int *count);
-void	ft_convert_hex_dec(long n, char *base, int *count);
+void	ft_convert_hex_dec(unsigned int n, char *base, int *count);
 int		ft_strlen(char *str);
 int		ft_check_t(char c);
-void	ft_putnbr_u(long nbr, int *count);
+void	ft_putnbr_u(unsigned int nbr, int *count);
 #endif

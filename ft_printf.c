@@ -6,7 +6,7 @@
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 10:36:45 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/26 07:52:44 by hharit           ###   ########.fr       */
+/*   Updated: 2021/11/26 10:22:27 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_conversion(char c, va_list ptr, int *count)
 	if (c == 'X')
 		ft_convert_hex_dec(va_arg(ptr, long), "0123456789ABCDEF", count);
 	if (c == 'u')
-		ft_putnbr_u(va_arg(ptr, long), count);
+		ft_putnbr_u(va_arg(ptr, unsigned int), count);
 }
 
 int	ft_printf(const char *str, ...)
