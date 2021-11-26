@@ -2,8 +2,8 @@
 
 int main()
 {
-	int		nbr;
+	long		nbr;
 	nbr = 9223372036854775807;
-	printf("org: %u\n", nbr);
-	ft_printf("ft: %u", nbr);
+	printf("org: %p\n", &nbr);
+	ft_printf("ft: %p", &nbr);
 }

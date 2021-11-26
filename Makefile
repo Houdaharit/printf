@@ -1,4 +1,4 @@
-NAME = libftp.a
+NAME = libftprintf.a
 
 CC = gcc
 
