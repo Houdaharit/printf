@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int	ft_strlen(char *str)
+static int	ft_strlen(char *str)
 {
 	int	len;
 
