@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_put_ptr(unsigned long n, char *b, int base, int *count)
+void	ft_put_ptr(unsigned long n, char *base, int *count)
 {
 	*count += 1;
 	if (n / 16)
