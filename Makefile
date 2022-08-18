@@ -1,24 +1,19 @@
-NAME = libftprintf.a
+NAME = printf
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_put.c ft_convert_hex_ptr.c
-
-OBJ = $(SRC:.c=.o)
+SRC = ft_printf.c ft_put.c ft_convert_hex_ptr.c main.c
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) 
-	ar -rc $(NAME) $(OBJ)
+$(NAME) : $(SRC) 
+	$(CC) $(CFLAGS) $(SRC) -o $(NAME)
 
 clean:
-	rm -f $(OBJ)
-
-fclean: clean
 	rm -f $(NAME)
 
-mclean: all clean
+fclean: clean
 
 re: fclean all
