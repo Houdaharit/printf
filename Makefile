@@ -4,7 +4,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_put.c ft_convert_hex_ptr.c main.c
+SRC = src/ft_printf.c src/ft_put.c src/ft_convert_hex_ptr.c src/main.c
 
 all : $(NAME)
 

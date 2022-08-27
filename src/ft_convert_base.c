@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_hex_ptr.c                               :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hharit <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 16:55:31 by hharit            #+#    #+#             */
-/*   Updated: 2021/11/26 11:01:04 by hharit           ###   ########.fr       */
+/*   Created: 2021/11/26 11:41:58 by hharit            #+#    #+#             */
+/*   Updated: 2021/11/26 11:42:00 by hharit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_printf.h"
+
+#include "../includes/ft_printf.h"
 
 void	ft_put_ptr(unsigned long n, char *base, int *count)
 {
